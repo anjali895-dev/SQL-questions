@@ -80,35 +80,35 @@ WHERE IsActive = 1;
 ```
 ---
 ## Q.12 Find all orders with OrderStatus = 'Delivered' from Fact_Orders.
-```sql==
+```sql
 SELECT *
 FROM Fact_Orders
 WHERE OrderStatus = 'Delivered';
 ```
 ---
 ## Q.13 Show products in the 'Electronics' category from Dim_Products.
-```sql==
+```sql
 SELECT *
 FROM Dim_Products
 WHERE Category = 'Electronics';
 ```
 ---
 ## Q.14 List payments made via 'UPI' from Fact_Payments.
-```sql==
+```sql
 SELECT *
 FROM Fact_Payments
 WHERE PaymentMethod = 'UPI';
 ```
 ---
 ## Q.15 Find all orders with TotalOrderAmount greater than 1000 from Fact_Orders.
-```sql==
+```sql
 SELECT*
 FROM Fact_Orders
 WHERE TotalOrderAmount > 1000;
 ```
 ---
 ## Q.16 Show customers from the city 'Bengaluru' in Dim_Customers.
-```sql==
+```sql
 SELECT *
 FROM Dim_Customers
 WHERE City = 'Bangalore';
@@ -122,49 +122,49 @@ WHERE MovementType = 'IN';
 ```
 ---
 ## Q.18 List orders where DiscountAmount is greater than 0.
-```sql==
+```sql
 SELECT *
 FROM Fact_Orders
 WHERE DiscountAmount = 0;
 ```
 ---
 ## Q.19 List all customers sorted by CustomerName in ascending order.
-```sql==
+```sql
 SELECT *
 FROM Dim_Customers
 ORDER BY CustomerName ASC;
 ```
 ---
 ## Q.20 Show orders sorted by TotalOrderAmount descending.
-```sql==
+```sql
 SELECT *
 FROM Fact_Orders
 ORDER BY TotalOrderAmount DESC;
 ```
 ---
 ## Q.21 List products sorted by Category then by ProductName.
-```sql==
+```sql
 SELECT *
 FROM Dim_Products
 ORDER BY Category, ProductName;
 ```
 ---
 ## Q.22 Show the top 5 most recent orders from Fact_Orders.
-```sql==
+```sql
 SELECT TOP 5 *
 FROM Fact_Orders
 ORDER BY OrderDate DESC;
 ```
 ---
 ## Q.23 Retrieve the first 10 customers who signed up (earliest SignupDate).
-```sql==
+```sql
 SELECT TOP 10 *
 FROM Dim_Customers
 ORDER BY SignupDate ASC;
 ```
 ---
 ## Q.24 Show 10 order items starting from the 11th record (use OFFSET).
-```sql==
+```sql
 SELECT *
 FROM Fact_Orders
 ORDER BY OrderDate
@@ -173,7 +173,7 @@ FETCH NEXT 10 ROWS ONLY;
 ```
 ---
 ## Q.25 Get the top 3 highest paid orders by PaidAmount from Fact_Payments.
-```sql==
+```sql
 SELECT TOP 3*
 FROM Fact_Payments
 ORDER BY PaidAmount DESC;
