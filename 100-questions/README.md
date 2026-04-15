@@ -52,7 +52,7 @@ This repository contains **100 SQL interview questions** categorized into:
 - [Q.49](#Q.49) Join Fact_InventoryMovement with Dim_Products to show ProductName and MovementType.
 - [Q.50](#Q.50) Show all orders with customer name using a LEFT JOIN (include orders without matching customers).
 - [Q.51](#Q.51) List the top 10 orders by TotalOrderAmount descending, showing CustomerID and OrderDate.
-- [Q.52](##Q.52) Show products sorted by Category ASC and UnitPrice DESC (using Fact_OrderItems joined with Dim_Products).
+- [Q.52](## Q.52) Show products sorted by Category ASC and UnitPrice DESC (using Fact_OrderItems joined with Dim_Products).
 - [Q.53](#Q.53) Find total revenue (TotalOrderAmount) per month using Fact_Orders. Use OrderDate.
 - [Q.54](#Q.54) Count the number of orders per LocationID in Fact_Orders.
 - [Q.55](#Q.55) Show all payments where PaymentStatus = 'Failed' and PaidAmount > 0.
