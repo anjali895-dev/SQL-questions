@@ -1,7 +1,7 @@
 This repository contains **100 SQL interview questions** categorized into:
 
 ## 📑 Table of Contents:
-- [Q.1](##Q.1) List all customer names and their cities from Dim_Customers.
+- [Q.1](## Q.1) List all customer names and their cities from Dim_Customers.
 - [Q.2](#Q.2) Retrieve all columns from Dim_Products.
 - [Q.3](#Q.3) Show ProductName and Category from Dim_Products.
 - [Q.4](#Q.4) Display all unique CustomerSegment values from Dim_Customers.
