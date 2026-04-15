@@ -12,13 +12,13 @@ SELECT
 	CustomerName, City
 FROM Dim_Customers;
 ```
-
+```sql
 --================================================================
 --Q.2 Retrieve all columns from Dim_Products.
 --================================================================
-/*SELECT *
-FROM Dim_Products;*/
-
+SELECT *
+FROM Dim_Products;
+```
 --================================================================
 --Q.3 Show ProductName and Category from Dim_Products.
 --================================================================
