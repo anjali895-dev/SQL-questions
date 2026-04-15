@@ -1,15 +1,15 @@
 This repository contains **100 SQL interview questions** categorized into:
 
 ## 📑 Table of Contents:
-- [Q.1](#Q.1)List all customer names and their cities from Dim_Customers.
-- [Q.2](#Q.2)Retrieve all columns from Dim_Products.
-- [Q.3](#Q.3)Show ProductName and Category from Dim_Products.
-- [Q.4](#Q.4)Display all unique CustomerSegment values from Dim_Customers.
-- [Q.5](#Q.5)Show OrderID, OrderDate, and TotalOrderAmount from Fact_Orders.
-- [Q.6](#Q.6)List all PaymentMethod values from Fact_Payments.
-- [Q.7](#Q.7)Show all columns from Fact_DeliveryLogs.
-- [Q.8](#Q.8)Retrieve ProductID and Quantity from Fact_OrderItems.
-- [Q.9](#Q.9)Show all distinct EventType values from Fact_CartEvents.
+- [Q.1](#Q.1) List all customer names and their cities from Dim_Customers.
+- [Q.2](#Q.2) Retrieve all columns from Dim_Products.
+- [Q.3](#Q.3) Show ProductName and Category from Dim_Products.
+- [Q.4](#Q.4) Display all unique CustomerSegment values from Dim_Customers.
+- [Q.5](#Q.5) Show OrderID, OrderDate, and TotalOrderAmount from Fact_Orders.
+- [Q.6](#Q.6) List all PaymentMethod values from Fact_Payments.
+- [Q.7](#Q.7) Show all columns from Fact_DeliveryLogs.
+- [Q.8](#Q.8) Retrieve ProductID and Quantity from Fact_OrderItems.
+- [Q.9](#Q.9) Show all distinct EventType values from Fact_CartEvents.
 - [Q.10](#Q.10) Display all Zone and Pincode values from Dim_Location.
 - [Q.11](#Q.11) List all active customers (IsActive = 1) from Dim_Customers.
 - [Q.12](#Q.12) Find all orders with OrderStatus = 'Delivered' from Fact_Orders.
@@ -52,7 +52,7 @@ This repository contains **100 SQL interview questions** categorized into:
 - [Q.49](#Q.49) Join Fact_InventoryMovement with Dim_Products to show ProductName and MovementType.
 - [Q.50](#Q.50) Show all orders with customer name using a LEFT JOIN (include orders without matching customers).
 - [Q.51](#Q.51) List the top 10 orders by TotalOrderAmount descending, showing CustomerID and OrderDate.
-- [Q.52](##Q.52) Show products sorted by Category ASC and UnitPrice DESC (using Fact_OrderItems joined with Dim_Products).
+- [Q.52](#Q.52) Show products sorted by Category ASC and UnitPrice DESC (using Fact_OrderItems joined with Dim_Products).
 - [Q.53](#Q.53) Find total revenue (TotalOrderAmount) per month using Fact_Orders. Use OrderDate.
 - [Q.54](#Q.54) Count the number of orders per LocationID in Fact_Orders.
 - [Q.55](#Q.55) Show all payments where PaymentStatus = 'Failed' and PaidAmount > 0.
