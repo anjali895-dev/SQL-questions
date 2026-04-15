@@ -3,12 +3,15 @@
 ```sql
 USE FK_Groceries_Advanced;
 ```
+
+```sql
 --================================================================
 --Q.1 List all customer names and their cities from Dim_Customers.
 --================================================================
 /*SELECT 
 	CustomerName, City
 FROM Dim_Customers;*/
+```
 
 --================================================================
 --Q.2 Retrieve all columns from Dim_Products.
