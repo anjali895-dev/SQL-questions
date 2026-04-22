@@ -29,3 +29,27 @@ JOIN employees e2 ON e1.manager_id = e2.manager_id
 AND e1.employee_id < e2.employee_id
 ORDER BY e1.manager_id;
 ```
+## Q3 Write a query to find the first and last record for each employee based on hire_date.
+```sql
+--Method 1 — Simple MIN/MAX approach:
+SELECT
+	employee_id,
+	name,
+	MIN(hire_date) AS first_hire,
+	MAX(hire_date) AS last_hire
+FROM employees
+GROUP BY employee_id,name;
+
+--Method 2 — Using window functions for full row details:
+SELECT *
+FROM (
+  SELECT *,
+    FIRST_VALUE(hire_date) OVER (PARTITION BY dept_id
+                                 ORDER BY hire_date) AS first_rec,
+    LAST_VALUE(hire_date)  OVER (PARTITION BY dept_id
+                                 ORDER BY hire_date
+                                 ROWS BETWEEN UNBOUNDED PRECEDING
+                                          AND UNBOUNDED FOLLOWING) AS last_rec
+  FROM employees
+) t;
+```
