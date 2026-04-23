@@ -53,3 +53,34 @@ FROM (
   FROM employees
 ) t;
 ```
+## Q4 Write a query to display all employees who earn more than the average salary for their department.
+```sql
+--Method 1 — subquery with JOIN:
+SELECT 
+	e.employee_id,
+	e.name,
+	e.salary,
+	e.dept_id
+FROM employees e
+JOIN(
+	SELECT
+	dept_id,
+	AVG(salary)AS avg_sal
+	FROM employees
+	GROUP BY dept_id
+)dept_avg ON e.dept_id = dept_avg.dept_id
+WHERE e.salary > dept_avg.avg_sal;
+
+--Method 2 — window function (cleaner):
+SELECT
+	employee_id,
+	name,
+	salary,
+	dept_id
+FROM (
+	SELECT *,
+	AVG(salary) OVER (PARTITION BY dept_id)AS dept_avg
+	FROM employees
+)t
+WHERE salary > dept_avg;
+```
