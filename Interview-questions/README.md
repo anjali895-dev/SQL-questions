@@ -84,3 +84,14 @@ FROM (
 )t
 WHERE salary > dept_avg;
 ```
+## Q5 Write a query to list all employees who are also managers.
+```sql
+SELECT DISTINCT e.employee_id,
+	e.name
+FROM employees e
+WHERE e.employee_id IN (
+	SELECT DISTINCT manager_id
+	FROM employees
+	WHERE manager_id IS NOT NULL
+);
+```
