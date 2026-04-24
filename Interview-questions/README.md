@@ -170,4 +170,18 @@ FROM (
 )t
 WHERE rnk =1;
 ```
-
+## Q10 Write a query to find the average order value by customer for each month.
+```sql
+SELECT 
+	customer_id,
+	YEAR(o.order_date) AS order_year,
+	MONTH(o.order_date) AS order_month,
+	CAST(AVG(oi.total_amount)AS DECIMAL(10,2)) AS avg_order_amount,
+	COUNT(o.order_id) AS total_order
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY customer_id,
+         YEAR(order_date),
+         MONTH(order_date)
+ORDER BY customer_id, order_year, order_month;
+```
