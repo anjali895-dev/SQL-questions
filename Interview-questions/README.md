@@ -147,3 +147,27 @@ SELECT
 FROM order_totals
 ORDER BY customer_id, order_date;
 ```
+## Q9 Write a query to display the employee(s) with the longest tenure at the company.
+```sql
+--Method 1 — Simple approach — using MIN hire_date:
+SELECT 
+	employee_id,
+	name,
+	hire_date,
+	CAST(DATEDIFF(YEAR, hire_date, GETDATE()) AS VARCHAR) + ' Years' AS tenure_date
+FROM employees
+WHERE hire_date = (SELECT MIN(hire_date) FROM employees);
+
+--Method 2 — Using RANK to handle ties:
+SELECT 
+	employee_id,
+	name,
+	hire_date
+FROM (
+	SELECT *,
+	RANK() OVER (ORDER BY hire_date ASC) AS rnk
+	FROM employees
+)t
+WHERE rnk =1;
+```
+
