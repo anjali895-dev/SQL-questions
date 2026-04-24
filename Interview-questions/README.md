@@ -225,3 +225,17 @@ FROM (
 	ORDER BY salary DESC
 ) top_3;
 ```
+
+## Q13 Write a query to find the most recent transaction for each customer.
+```sql
+SELECT *
+FROM (
+	SELECT *,
+	ROW_NUMBER() OVER(
+		PARTITION BY customer_id
+		ORDER BY transaction_date DESC
+		) AS rn
+	FROM transactions
+)t
+WHERE rn = 1;
+```
