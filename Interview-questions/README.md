@@ -125,5 +125,25 @@ WHERE age > dept_avg_age;
 
 ## Q8 Write a query to find the running total of orders for each customer sorted by order date.
 ```sql
-
+WITH order_totals AS (
+    SELECT
+        o.customer_id,
+        o.order_id,
+        o.order_date,
+        SUM(oi.total_amount) AS order_amount
+    FROM dbo.orders o
+    JOIN dbo.order_items oi ON o.order_id = oi.order_id 
+    GROUP BY o.customer_id, o.order_id, o.order_date
+)
+SELECT
+    customer_id,
+    order_id,
+    order_date,
+    order_amount,
+    SUM(order_amount) OVER (
+        PARTITION BY customer_id
+        ORDER BY order_date
+    ) AS running_total
+FROM order_totals
+ORDER BY customer_id, order_date;
 ```
