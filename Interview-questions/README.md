@@ -204,4 +204,24 @@ SELECT yr,
 FROM yearly_revenue
 ORDER BY yr;
 ```
+## Q12 Write a query to find the Nth highest salary from the employee table.
+```sql
+--Method 1 — Replace N with any number (e.g. 3 for 3rd highest):
+SELECT 
+	salary
+FROM (
+	SELECT *,
+		DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk
+	FROM employees
+) ranked
+WHERE rnk = 3;
 
+--Method 2 — Subquery method (older SQL versions):
+SELECT
+	MIN(salary)
+FROM (
+	SELECT DISTINCT TOP 3 salary
+	FROM employees
+	ORDER BY salary DESC
+) top_3;
+```
