@@ -185,3 +185,23 @@ GROUP BY customer_id,
          MONTH(order_date)
 ORDER BY customer_id, order_year, order_month;
 ```
+## Q11 Write a query to calculate the year-on-year growth of revenue.
+```sql
+WITH yearly_revenue AS (
+  SELECT YEAR(o.order_date) AS yr,
+         SUM(oi.total_amount) AS revenue
+  FROM orders o
+  JOIN order_items oi ON o.order_id = oi.order_id
+  GROUP BY YEAR(o.order_date)
+)
+SELECT yr,
+       revenue,
+       LAG(revenue) OVER (ORDER BY yr) AS prev_year_revenue,
+       ROUND(
+         (revenue - LAG(revenue) OVER (ORDER BY yr)) * 100.0
+         / LAG(revenue) OVER (ORDER BY yr), 2
+       ) AS yoy_growth_pct
+FROM yearly_revenue
+ORDER BY yr;
+```
+
