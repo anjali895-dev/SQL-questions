@@ -239,3 +239,66 @@ FROM (
 )t
 WHERE rn = 1;
 ```
+## Q14 Write a query to find all pairs of products that were ordered together at least once.
+```sql
+SELECT oi1.product_id AS product_1,
+       oi2.product_id AS product_2,
+       COUNT(DISTINCT oi1.order_id) AS times_together
+FROM order_items oi1
+JOIN order_items oi2
+  ON oi1.order_id = oi2.order_id
+ AND oi1.product_id < oi2.product_id
+GROUP BY oi1.product_id, oi2.product_id
+HAVING COUNT(DISTINCT oi1.order_id) >= 1
+ORDER BY times_together DESC;
+```
+## Q15 Write a query to identify customers who made a purchase every month for the past year.
+ ```sql
+ SELECT 
+	customer_id
+FROM orders
+WHERE order_date >= DATEADD (YEAR, -1, GETDATE())
+GROUP BY customer_id
+HAVING COUNT(DISTINCT
+		CONCAT(YEAR(order_date),'-',MONTH(order_date))
+) = 12;
+```
+## Q16 Write a query to find the total revenue for each region in a given quarter.
+```sql
+SELECT c.region,
+       DATEPART(QUARTER, o.order_date) AS quarter,
+       YEAR(o.order_date) AS yr,
+       SUM(oi.total_amount) AS total_revenue
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN order_items oi	ON oi.order_id = o.order_id
+WHERE YEAR(o.order_date) = 2026
+  AND DATEPART(QUARTER, o.order_date) = 1
+GROUP BY c.region,
+         DATEPART(QUARTER, o.order_date),
+         YEAR(o.order_date)
+ORDER BY c.region;
+```
+## Q17 Write a query to find the first purchase date of each customer.
+```SQL
+--Method 1 — Simple approach:
+SELECT 
+	customer_id,
+	MIN(order_date) AS first_purchase_date
+FROM orders
+GROUP BY customer_id
+ORDER BY first_purchase_date;
+	
+--Method 2 — Full row details of first order:
+
+SELECT *
+FROM (
+  SELECT *,
+    ROW_NUMBER() OVER (
+      PARTITION BY customer_id
+      ORDER BY order_date ASC
+    ) AS rn
+  FROM orders
+) t
+WHERE rn = 1;
+```
