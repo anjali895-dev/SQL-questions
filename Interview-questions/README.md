@@ -95,3 +95,35 @@ WHERE e.employee_id IN (
 	WHERE manager_id IS NOT NULL
 );
 ```
+## Q6 Write a query to find employees who joined in the same month and year.
+```sql
+SELECT
+	e1.name AS emp1,
+	e2.name AS emp2,
+	MONTH(e1.hire_date) AS join_month,
+	YEAR(e1.hire_date) AS join_year
+FROM employees e1
+JOIN employees e2 ON MONTH(e1.hire_date) = MONTH(e2.hire_date)
+AND YEAR(e1.hire_date) = YEAR(e2.hire_date)
+AND e1.employee_id < e2.employee_id;
+```
+
+## Q7 Write a SQL query to get employees older than the average age of their department.
+```sql
+SELECT
+	employee_id,
+	name,
+	age,
+	dept_id
+FROM (
+	SELECT *,
+	AVG(age) OVER (PARTITION BY dept_id)AS dept_avg_age
+	FROM employees
+)t
+WHERE age > dept_avg_age;
+```
+
+## Q8 Write a query to find the running total of orders for each customer sorted by order date.
+```sql
+
+```
