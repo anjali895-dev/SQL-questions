@@ -302,3 +302,38 @@ FROM (
 ) t
 WHERE rn = 1;
 ```
+## Q18 Find the total salary of each department where total salary > 50,000.
+```sql
+SELECT
+	dept_id,
+	CAST(SUM(salary)AS DECIMAL(10,2)) AS total_salary
+FROM employees
+GROUP BY dept_id
+HAVING SUM(salary) > 50000
+ORDER BY total_salary DESC;
+```
+## Q19 Write a query to get the total number of employees hired per month and year.
+```sql
+SELECT 
+	YEAR(hire_date)  AS hire_year,
+    MONTH(hire_date) AS hire_month,
+    COUNT(employee_id) AS employees_hired
+FROM employees
+GROUP BY YEAR(hire_date), MONTH(hire_date)
+ORDER BY hire_year, hire_month;
+```
+
+## Q20 Write a query to delete all records from a table where the column value is NULL.
+```sql
+--Method 1 — Delete where a specific column is NULL:
+
+DELETE FROM employees
+WHERE salary IS NULL;
+
+--Method 2 — Delete where ANY column is NULL:
+
+DELETE FROM employees
+WHERE salary IS NULL
+	OR dept_id IS NULL
+	OR name IS NULL;
+```
